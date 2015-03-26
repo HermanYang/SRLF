@@ -1,0 +1,123 @@
+%% csrlf.tex
+%% 2014/03/24
+%% by Hermann Yang
+
+%import template
+\documentclass[runningheads]{llncs}
+\usepackage{amsmath, amssymb}
+\usepackage{ruler}
+\usepackage{color}
+
+%\sloppy
+
+% Custom packages
+\usepackage{multirow}
+\usepackage{paralist}
+
+%% CITATION PACKAGES
+\usepackage{cite}
+
+%% GRAPHICS RELATED PACKAGES
+\usepackage{graphicx}
+
+%% ALIGNMENT PACKAGES
+\usepackage{array}
+
+%% SUBFIGURE PACKAGES
+\usepackage[tight,footnotesize]{subfigure}
+
+% PDF, URL AND HYPERLINK PACKAGES
+\usepackage{url}
+
+% FIX FOR SPANNING
+\usepackage{stfloats}
+
+% description list
+\newcounter{desccount}
+\newcommand{\desclabel}[1]{%
+  \refstepcounter{desccount}\label{#1}
+}
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\newcommand{\sys}{SRLF}
+
+\newcommand{\csr}{CSR}
+
+\newcommand{\lfea} {local feature-based algorithm}
+
+\newcommand{\sregion} {salient region}
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\usepackage{times}
+\usepackage[small,it]{caption}
+\DeclareCaptionType{copyrightbox}
+
+%\setlength{\abovecaptionskip}{-1pt}
+%\setlength{\belowcaptionskip}{-1pt}
+%\setlength{\textfloatsep}{2pt}
+%\setlength{\floatsep}{2pt}
+%\setlength{\intextsep}{4pt}
+
+% save space for item size
+\newcommand{\squishlist}{
+ \begin{list}{$\bullet$}
+  { \setlength{\itemsep}{0pt}
+     \setlength{\parsep}{0pt}
+     \setlength{\topsep}{1pt}
+     \setlength{\partopsep}{0pt}
+     \setlength{\leftmargin}{1.5em}
+     \setlength{\labelwidth}{1em}
+     \setlength{\labelsep}{0.5em} } }
+
+\newcommand{\squishend}{
+  \end{list}  }
+
+%% DOCUMENT
+\begin{document}
+
+\pagestyle{headings}
+\mainmatter
+
+\def\ACCV14SubNumber{***}  % Insert your submission number here
+
+%% TITLE
+\title{\LARGE{{\sys}: Salient Region based Local Feature Extraction Algorithm}}
+
+
+\titlerunning{ACCV-14 submission ID \ACCV14SubNumber}
+\authorrunning{ACCV-14 submission ID \ACCV14SubNumber}
+
+\author{Anonymous ACCV 2014 submission}
+\institute{Paper ID \ACCV14SubNumber}
+
+
+\maketitle
+%% DOCUMENT BODY
+
+\input{abstract}
+
+%\keywords{Local feature, Salient region, Image retrieval, Feature point}
+
+\input{introduction}
+
+\input{motivation}
+
+\input{algorithm}
+
+\input{evaluation}
+
+\input{relatedwork}
+
+\input{conclusion}
+
+%\input{acknowledgement}
+
+\bibliographystyle{abbrv}
+\bibliography{srlf}
+
+\end{document}

@@ -1,0 +1,31 @@
+\section{Related Work}
+
+In this section, we first introduce some {\lfea}s. Then we discuss previous salient region detection algorithms and some acceleration efforts on these {\lfea}s.
+
+\subsection{Local Feature-based Algorithms}
+
+There exist many kinds of {\lfea}. SIFT~\cite{lowe1999object, lowe2004distinctive} is the most publicly accepted and robust {\lfea}. For different conditions or purposes, some variants of SIFT are also widely used, such as RIFT~\cite{lazebnik2005sparse}, GLOH~\cite{mikolajczyk2005performance}, and PCA-SIFT~\cite{ke2004pca}. To deal with the performance issue of SIFT, SURF~\cite{bay2006surf} is proposed in 2006 as an optimized local feature descriptor based on SIFT. With acceptable precision loss, SURF tends to be an efficient alternative of SIFT. But the performance of {\lfea}s still far from enormous performance demand as the multimedia data grows shapely. Some researches~\cite{calonder2010brief}\cite{alhwarin2010vf} are trying to improve the feature descriptor structures in order to speed up building and matching features as well as reduce storage.
+
+Local feature descriptors are used widely because of their robustness. Some common applications include automatic image mosaic technique~\cite{yang2008image, salgian2007using}, panorama stitching~\cite{brown2003recognising,tang2008modified}, robot localization~\cite{se2001vision} and object recognition~\cite{heo2008illumination}. And most of them are sensitive to the computation time, or even require real time processing.
+
+\subsection{Salient Region Algorithms}
+
+Most salient region researches focus on generating precise salient map. Some of them~\cite{cheng2011global,achanta2009frequency} have already achieved impressive precision and recall. Inspired by typical salient region algorithm, we try to utilize it to speed up all kinds of {\lfea}s. We are not the first one to take advantage of salient region to improve {\lfea}s. Huang et al.~\cite{huang2009image} involves a salient region detection algorithm to eliminate noises for SURF descriptor. Liang et al.~\cite{liang2010salient} uses similar salient map method to perform noise reduction for SIFT descriptor. But none of them try to improve the computation performance of {\lfea}s by using any salient detection algorithms.
+
+\subsection{Previous Acceleration Efforts}
+
+Since these {\lfea}s include complex computations and have to describe hundreds or even thousands of feature points, they are time-consuming, which limits their application fields with real-time requirements. In order to solve the problem, many efforts have been done to accelerate {\lfea}s through exploiting inherent parallelism in them.
+
+\textbf{Acceleration on Multi-core CPU: }
+Zhang et al.~\cite{zhang2008sift} implemented a parallel SIFT algorithm and showed a 6.4X speedup on an 8-core machine. Feng et al.~\cite{feng2008parallelization} achieved a speedup of 11X on a 16-core machine. In~\cite{zhang2009computing}, N. Zhang implemented a scale-level parallelism for SURF on multi-core CPU. In order to overcome imbalanced workload of scale-level, they improved their design with block-level parallelism in~\cite{zhang2010computing}. Although these algorithms can be used to accelerate {\lfea}s, they cannot scale well with the core number increasing. To solve the scalability constraints, Peng et al.\cite{chen2012adaptive} proposed an adaptive pipeline parallelism, which can dynamically adjust the workloads and achieve good scalability.
+
+
+\textbf{Acceleration on GPGPU: } There are also research of accelerating {\lfea}s on GPGPU, Seth et al.~\cite{warn2009accelerating} explored and evaluated parallel SIFT using large images as input in both multi-core CPU and GPGPU. They found that SIFT requires huge memory space when the input image size is large. Their implementation on a 8-core processor only achieves a speedup of 2X because of the poor cache locality. Their GPGPU version is 13X faster. Sinha et al.~\cite{sinha2011feature} also tried to map SIFT on GPGPU, and their implementation can process 640*480 images at a speed of 10 frames/s on GeForce 7800 GTX. Heymann et al.~\cite{heymann2007sift} presented another GPGPU-based acceleration on SIFT and achieved a speed of 20FPS on QuadroFX 3400. Considering the computing power of GPGPU, their performance is not satisfied. In~\cite{cornelis2008fast}, Cornelis et al. used GPGPU to accelerate SURF based on the combination of scale-level parallelism and block-level parallelism.
+
+Compared to these prior efforts, our approach can further reduce the storage requirements and improve the retrieval time except accelerating feature extraction time. Moreover, our approach is orthogonal to these prior parallel works. In other words, our approach can be parallelized to further improve performance.
+
+
+
+
+
+
